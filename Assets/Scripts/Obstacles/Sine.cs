@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AlwaysUp.Gameplay
 {
-    [System.Serializable]
+    [Serializable]
     public class Sine
     {
         [Header("Settings")]
