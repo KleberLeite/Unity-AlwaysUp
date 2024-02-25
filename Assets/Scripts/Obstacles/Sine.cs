@@ -9,7 +9,7 @@ namespace AlwaysUp.Gameplay
         [Header("Settings")]
         [SerializeField] private float _range;
         [Tooltip("WARNING: when using random automatically the starting percentage is ignored")]
-        [SerializeField][Range(0, 1)] private float _startPercentage = 0f;
+        [SerializeField][Range(-1, 1)] private float _startPercentage = 0f;
         [Tooltip("WARNING: when using random automatically the starting percentage is ignored")]
         [SerializeField][Min(0)] private float _randomStart = 0f;
         [SerializeField] private float _speed = 1f;
