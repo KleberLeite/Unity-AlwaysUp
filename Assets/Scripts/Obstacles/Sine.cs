@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace AlwaysUp.Gameplay
@@ -20,7 +21,7 @@ namespace AlwaysUp.Gameplay
 
         public void Init()
         {
-            _startTimeOffset = Random.Range(0, _randomStart) + Mathf.PI / 2 * _startPercentage;
+            _startTimeOffset = UnityEngine.Random.Range(0, _randomStart) + (float)Math.Asin(_startPercentage);
             _initialized = true;
         }
 
