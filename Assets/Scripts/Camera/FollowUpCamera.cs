@@ -11,7 +11,12 @@ namespace AlwaysUp.Gameplay
         [SerializeField] private Vector3 _offset;
         [SerializeField] private Transform _target;
 
-        private Vector3 _targetPos = Vector3.zero;
+        private Vector3 _targetPos;
+
+        private void Awake()
+        {
+            _targetPos = transform.position;
+        }
 
         private void FixedUpdate()
         {
