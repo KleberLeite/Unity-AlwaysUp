@@ -1,3 +1,4 @@
+using AlwaysUp.Utils;
 using UnityEngine;
 
 namespace AlwaysUp.Gameplay
@@ -10,6 +11,7 @@ namespace AlwaysUp.Gameplay
 
         [Header("Settings")]
         [SerializeField] private float _jumpForce;
+        [SerializeField][Min(0)] private float _maxVerticalVelocity;
 
         private Rigidbody2D _rig;
 
@@ -34,6 +36,12 @@ namespace AlwaysUp.Gameplay
                 _rig.velocity = Vector2.zero;
 
             _rig.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+        }
+
+        private void FixedUpdate()
+        {
+            if (_rig.velocity.y >= _maxVerticalVelocity)
+                _rig.velocity = _rig.velocity.With(y: _maxVerticalVelocity);
         }
     }
 }

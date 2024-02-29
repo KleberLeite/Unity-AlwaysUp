@@ -397,9 +397,9 @@ GameObject:
   - component: {fileID: 2038577963}
   - component: {fileID: 2038577962}
   - component: {fileID: 2038577966}
+  - component: {fileID: 2038577967}
   - component: {fileID: 2038577965}
   - component: {fileID: 2038577964}
-  - component: {fileID: 2038577967}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -525,6 +525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _input: {fileID: 161142481}
   _jumpForce: 5
+  _maxVerticalVelocity: 15
 --- !u!114 &2038577967
 MonoBehaviour:
   m_ObjectHideFlags: 0
