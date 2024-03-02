@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3390725050700711547}
   - component: {fileID: 3390725050700711544}
   - component: {fileID: 4346047222131893410}
+  - component: {fileID: 8908039974063808886}
   m_Layer: 0
   m_Name: Box 1
   m_TagString: Untagged
@@ -111,6 +112,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8908039974063808886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390725050700711546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b219a03c844bdc04297004cb8c152dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3390725051014346962
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,11 +134,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3390725051014346960}
   - component: {fileID: 3390725051014346963}
-  - component: {fileID: 3797616127506731076}
   - component: {fileID: 3152949896316367191}
   - component: {fileID: 3759625328571295349}
   m_Layer: 0
-  m_Name: Sine Double Box
+  m_Name: SineDoubleBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,18 +184,6 @@ MonoBehaviour:
   - _transform: {fileID: 3390725051806744468}
     _inverse: 0
     _timeOffset: 0
---- !u!114 &3797616127506731076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3390725051014346962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b219a03c844bdc04297004cb8c152dc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &3152949896316367191
 Rigidbody2D:
   serializedVersion: 4
@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 3390725051806744468}
   - component: {fileID: 3390725051806744469}
   - component: {fileID: 8164549798388124383}
+  - component: {fileID: 2626895387203323274}
   m_Layer: 0
   m_Name: Box 2
   m_TagString: Untagged
@@ -329,3 +330,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2626895387203323274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390725051806744471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b219a03c844bdc04297004cb8c152dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -3,19 +3,12 @@ using UnityEngine;
 
 namespace AlwaysUp.Gameplay
 {
-    [RequireComponent(typeof(ObstacleCollisionDetector))]
-    public class KillerObstacle : MonoBehaviour
+    public class KillerObstacle : Obstacle
     {
         [Header("Broadcasting")]
         [SerializeField] private VoidEventChannelSO _onCollision;
 
-        private void Awake()
-        {
-            ObstacleCollisionDetector collisionDetector = GetComponent<ObstacleCollisionDetector>();
-            collisionDetector.OnCollision += OnCollision;
-        }
-
-        private void OnCollision(GameObject gameObject, Ball ball)
+        override protected void OnCollision(GameObject gameObject)
         {
             _onCollision.RaiseEvent();
         }
