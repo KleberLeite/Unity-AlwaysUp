@@ -171,13 +171,14 @@ MonoBehaviour:
   _ball: {fileID: 2038577963}
   _obstaclesHolder: {fileID: 882063792}
   _obstaclesPrefab:
-  - {fileID: 3997653413657211426, guid: f31616fd3f5743f47a5a0dae8a309348, type: 3}
-  - {fileID: 7690678496158220019, guid: 0879f3e1a3de0984aa043325c0115163, type: 3}
-  - {fileID: 8056266367046726761, guid: b05589cc5f2f35a4e9f451f8c3b3b6fa, type: 3}
-  - {fileID: 2057557874499443369, guid: cd43f05692140754e8d0ccd023c8add4, type: 3}
-  - {fileID: 3390725051014346962, guid: fb4462c24f28a044289cffc4c4b17f05, type: 3}
-  - {fileID: 4025051004803212649, guid: 307feaf30d3f6c0469ecf4fa07b5beb9, type: 3}
+  - {fileID: -1125768051208097390, guid: 0879f3e1a3de0984aa043325c0115163, type: 3}
+  - {fileID: -5024710111061230452, guid: b05589cc5f2f35a4e9f451f8c3b3b6fa, type: 3}
+  - {fileID: -5580268447062834718, guid: cd43f05692140754e8d0ccd023c8add4, type: 3}
+  - {fileID: 3759625328571295349, guid: fb4462c24f28a044289cffc4c4b17f05, type: 3}
+  - {fileID: -4233818217147259473, guid: 307feaf30d3f6c0469ecf4fa07b5beb9, type: 3}
+  _colorObstacle: {fileID: 7912068768663740985, guid: f31616fd3f5743f47a5a0dae8a309348, type: 3}
   _obstaclesPerSector: 2
+  _countToNewColorObstacle: 6
 --- !u!1 &161142479
 GameObject:
   m_ObjectHideFlags: 0
