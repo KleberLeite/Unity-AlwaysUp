@@ -1,3 +1,4 @@
+using AlwaysUp.Events;
 using AlwaysUp.Utils;
 using UnityEngine;
 
@@ -12,6 +13,11 @@ namespace AlwaysUp.Gameplay
         [Header("Settings")]
         [SerializeField] private float _jumpForce;
         [SerializeField][Min(0)] private float _maxVerticalVelocity;
+        [SerializeField] private GameObject _ballGO;
+        [SerializeField] private ParticleSystem _ballExplosionParticles;
+
+        [Header("Listening")]
+        [SerializeField] private VoidEventChannelSO _onKilled;
 
         private Rigidbody2D _rig;
 
@@ -23,11 +29,15 @@ namespace AlwaysUp.Gameplay
         private void OnEnable()
         {
             _input.OnJump += OnJump;
+
+            _onKilled.OnEventRaised += OnKilled;
         }
 
         private void OnDisable()
         {
             _input.OnJump -= OnJump;
+
+            _onKilled.OnEventRaised -= OnKilled;
         }
 
         private void OnJump()
@@ -42,6 +52,15 @@ namespace AlwaysUp.Gameplay
         {
             if (_rig.velocity.y >= _maxVerticalVelocity)
                 _rig.velocity = _rig.velocity.With(y: _maxVerticalVelocity);
+        }
+
+        private void OnKilled()
+        {
+            _ballGO.SetActive(false);
+            _ballExplosionParticles.gameObject.SetActive(true);
+            _ballExplosionParticles.Play();
+
+            _input.OnJump -= OnJump;
         }
     }
 }
