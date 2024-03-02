@@ -5,6 +5,10 @@ namespace AlwaysUp.Gameplay
 {
     public class GameColorController : MonoBehaviour
     {
+        [Header("Settings")]
+        [SerializeField] private SpriteRenderer _backgrounFillerSr;
+        [SerializeField] private Animation _backgroundFillAnimation;
+
         [Header("Listening")]
         [SerializeField] private IntEventChannelSO _onHitColor;
 
@@ -28,6 +32,9 @@ namespace AlwaysUp.Gameplay
         private void OnHitColor(int colorIndex)
         {
             CurrentColorIndex = colorIndex;
+
+            _backgrounFillerSr.color = GameColors.GetColorByIndex(colorIndex);
+            _backgroundFillAnimation.Play();
         }
     }
 }
