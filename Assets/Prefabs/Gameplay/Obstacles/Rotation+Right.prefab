@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 8056266367046726763}
   - component: {fileID: 8056266367046726758}
   - component: {fileID: 6984174266560148682}
-  - component: {fileID: -6355728177677919454}
   - component: {fileID: -5024710111061230452}
   m_Layer: 0
   m_Name: Rotation+Right
@@ -109,28 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!66 &-6355728177677919454
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8056266367046726761}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 1
-  m_GenerationType: 1
-  m_EdgeRadius: 0
-  m_ColliderPaths: []
-  m_CompositePaths:
-    m_Paths: []
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
 --- !u!114 &-5024710111061230452
 MonoBehaviour:
   m_ObjectHideFlags: 0
