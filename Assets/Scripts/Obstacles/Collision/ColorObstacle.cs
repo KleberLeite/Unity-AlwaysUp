@@ -29,7 +29,7 @@ namespace AlwaysUp.Gameplay
         {
             _obstaclesColorIndex = new Dictionary<SpriteRenderer, int>();
             int j = 0;
-            for (int i = 0; i < GameColors.Count; i++)
+            for (int i = 0; j < _obstacles.Length; i++)
             {
                 if (i == GameColorController.CurrentColorIndex)
                     continue;
