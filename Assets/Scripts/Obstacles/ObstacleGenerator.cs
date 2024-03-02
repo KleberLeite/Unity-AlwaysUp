@@ -62,12 +62,15 @@ namespace AlwaysUp.Gameplay
                 }
 
                 Vector3 pos = offset + obstacle.transform.position.With(y: 0, z: 0) + new Vector3(0, i * spaceBetweenObstacles);
-                GameObject newObstacle = Instantiate(obstacle.gameObject, pos, Quaternion.identity, _obstaclesHolder);
-                AddObstacle(newObstacle);
+                Obstacle newObstacle = Instantiate(obstacle, pos, Quaternion.identity, _obstaclesHolder);
+                newObstacle.Init(GetRandomColorIndex());
+                AddObstacle(newObstacle.gameObject);
 
                 _currentCountToNewColorObstacle--;
             }
         }
+
+        private int GetRandomColorIndex() => Random.Range(-1, GameColors.Count);
 
         private void AddObstacle(GameObject obstacle)
         {

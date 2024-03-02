@@ -20,6 +20,7 @@ namespace AlwaysUp.Gameplay
             Count = _colors.Length;
         }
 
-        public static Color GetColorByIndex(int index) => _colors[index];
+        public static Color GetColorByIndex(int index)
+            => index == -1 ? Color.white : _colors[index];
     }
 }
