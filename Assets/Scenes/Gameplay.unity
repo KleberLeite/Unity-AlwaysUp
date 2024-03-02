@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 155099371}
   - component: {fileID: 155099372}
   m_Layer: 0
-  m_Name: ObstacleGenerator
+  m_Name: ObstaclesController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

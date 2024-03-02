@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AlwaysUp.Gameplay
 {
-    public class ObstacleGenerator : MonoBehaviour
+    public class ObstaclesController : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField] private float _sectorSize;

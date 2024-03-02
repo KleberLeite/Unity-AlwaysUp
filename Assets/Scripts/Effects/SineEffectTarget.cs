@@ -3,7 +3,7 @@ using UnityEngine;
 namespace AlwaysUp.Gameplay
 {
     [System.Serializable]
-    public class ObstacleTarget
+    public class SineEffectTarget
     {
         [SerializeField] private Transform _transform;
         [SerializeField] private bool _inverse;
