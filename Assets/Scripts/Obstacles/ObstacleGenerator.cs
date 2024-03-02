@@ -11,13 +11,14 @@ namespace AlwaysUp.Gameplay
         [SerializeField] private float _sectorSize;
         [SerializeField] private Transform _ball;
         [SerializeField] private Transform _obstaclesHolder;
-        [SerializeField] private Obstacle[] _obstaclesPrefab;
-        [SerializeField] private Obstacle _colorObstacle;
+        [SerializeField] private ObstaclePool[] _obstaclesPool;
+        [SerializeField] private ObstaclePool _colorObstaclePool;
         [SerializeField] private int _obstaclesPerSector;
         [SerializeField] private int _countToNewColorObstacle;
 
         private int _currentSectorIndex;
-        private List<GameObject> _oldObstacles = new List<GameObject>();
+        private List<Obstacle> _oldObstacles = new List<Obstacle>();
+        private List<ObstaclePool> _oldObstaclesPools = new List<ObstaclePool>();
         private int _maxObstacles;
         private int _currentCountToNewColorObstacle;
 
@@ -43,28 +44,35 @@ namespace AlwaysUp.Gameplay
         private void GenerateSector(int sectorIndex)
         {
             Vector3 offset = new Vector3(0, sectorIndex * _sectorSize);
-            List<Obstacle> obstacles = _obstaclesPrefab.ToList();
+            List<ObstaclePool> obstacles = _obstaclesPool.ToList();
             float spaceBetweenObstacles = _sectorSize / _obstaclesPerSector;
 
             for (int i = 0; i < _obstaclesPerSector; i++)
             {
                 Obstacle obstacle;
+                ObstaclePool obstaclePool;
                 if (_currentCountToNewColorObstacle == 0)
                 {
-                    obstacle = _colorObstacle;
+                    obstacle = _colorObstaclePool.Get();
+                    obstaclePool = _colorObstaclePool;
+
                     _currentCountToNewColorObstacle = _countToNewColorObstacle;
                 }
                 else
                 {
                     int rngIndex = Random.Range(0, obstacles.Count);
-                    obstacle = obstacles[rngIndex];
+                    obstacle = obstacles[rngIndex].Get();
                     obstacles.RemoveAt(rngIndex);
+
+                    obstaclePool = _obstaclesPool[rngIndex];
                 }
 
                 Vector3 pos = offset + obstacle.transform.position.With(y: 0, z: 0) + new Vector3(0, i * spaceBetweenObstacles);
-                Obstacle newObstacle = Instantiate(obstacle, pos, Quaternion.identity, _obstaclesHolder);
-                newObstacle.Init(GetRandomColorIndex());
-                AddObstacle(newObstacle.gameObject);
+                obstacle.transform.position = pos;
+                obstacle.gameObject.SetActive(true);
+                obstacle.transform.parent = _obstaclesHolder;
+                obstacle.Init(GetRandomColorIndex());
+                AddObstacle(obstacle, obstaclePool);
 
                 _currentCountToNewColorObstacle--;
             }
@@ -72,13 +80,15 @@ namespace AlwaysUp.Gameplay
 
         private int GetRandomColorIndex() => Random.Range(-1, GameColors.Count);
 
-        private void AddObstacle(GameObject obstacle)
+        private void AddObstacle(Obstacle obstacle, ObstaclePool pool)
         {
             _oldObstacles.Add(obstacle);
+            _oldObstaclesPools.Add(pool);
             if (_oldObstacles.Count > _maxObstacles)
             {
-                GameObject oldObstacle = _oldObstacles[0];
-                Destroy(oldObstacle);
+                _oldObstaclesPools[0].GiveBack(_oldObstacles[0]);
+
+                _oldObstaclesPools.RemoveAt(0);
                 _oldObstacles.RemoveAt(0);
             }
         }
