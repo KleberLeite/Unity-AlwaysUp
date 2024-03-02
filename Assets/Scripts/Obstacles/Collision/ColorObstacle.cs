@@ -9,6 +9,7 @@ namespace AlwaysUp.Gameplay
     {
         [Header("Settings")]
         [SerializeField] private GameObject[] _obstacles;
+        [SerializeField] private Animation _onHitColorAnim;
 
         [Header("Broadcasting")]
         [SerializeField] private IntEventChannelSO _onHitColor;
@@ -74,6 +75,11 @@ namespace AlwaysUp.Gameplay
             int colorIndex = _obstaclesColorIndex[obstacle.GetComponent<ObjectID>().ID];
             _onHitColor.RaiseEvent(colorIndex);
 
+            _onHitColorAnim.Play();
+        }
+
+        private void OnEndHitColorAnim()
+        {
             gameObject.SetActive(false);
         }
     }

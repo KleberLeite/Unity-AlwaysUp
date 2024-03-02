@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 3997653413657211425}
   - component: {fileID: 7912068768663740985}
   - component: {fileID: 5302384697610243690}
+  - component: {fileID: 3716574927209716062}
   m_Layer: 0
   m_Name: ColorObstacle
   m_TagString: Untagged
@@ -446,7 +447,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3997653413965907249}
   m_Father: {fileID: 0}
@@ -488,6 +489,7 @@ MonoBehaviour:
   - {fileID: 3997653413923212931}
   - {fileID: 3997653412430242996}
   - {fileID: 3997653411915313001}
+  _onHitColorAnim: {fileID: 3716574927209716062}
   _onHitColor: {fileID: 11400000, guid: 2979e756dd230f94fa27b42b8b0446e8, type: 2}
   _objectIDs:
   - {fileID: 6217192023395356823}
@@ -520,6 +522,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!111 &3716574927209716062
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3997653413657211426}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9d91d5e4cff3ce8479ae97688b1e8c5d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 9d91d5e4cff3ce8479ae97688b1e8c5d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &3997653413923212931
 GameObject:
   m_ObjectHideFlags: 0
