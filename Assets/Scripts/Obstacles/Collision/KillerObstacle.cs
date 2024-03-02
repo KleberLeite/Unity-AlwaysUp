@@ -12,10 +12,10 @@ namespace AlwaysUp.Gameplay
         private void Awake()
         {
             ObstacleCollisionDetector collisionDetector = GetComponent<ObstacleCollisionDetector>();
-            collisionDetector.OnCollision.AddListener(OnCollision);
+            collisionDetector.OnCollision += OnCollision;
         }
 
-        private void OnCollision(Ball ball)
+        private void OnCollision(GameObject gameObject, Ball ball)
         {
             _onCollision.RaiseEvent();
         }
