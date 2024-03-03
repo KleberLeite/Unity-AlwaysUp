@@ -41,11 +41,6 @@ namespace AlwaysUp.Gameplay
             _maxObstacles = 3 * _obstaclesPerSector;
         }
 
-        private void Start()
-        {
-            GenerateSector(0);
-        }
-
         private void Update()
         {
             if (_ball.transform.position.y > _currentSectorIndex * _sectorSize)
@@ -105,8 +100,11 @@ namespace AlwaysUp.Gameplay
         private void OnReset()
         {
             RemoveAllOldObstacles();
+
             _currentCountToNewColorObstacle = 0;
             _currentSectorIndex = 0;
+
+            GenerateSector(0);
         }
 
         private void RemoveAllOldObstacles()
