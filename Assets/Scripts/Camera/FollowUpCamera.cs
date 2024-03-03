@@ -1,4 +1,3 @@
-using AlwaysUp.Events;
 using AlwaysUp.Utils;
 using UnityEngine;
 
@@ -12,30 +11,10 @@ namespace AlwaysUp.Gameplay
         [SerializeField] private Vector3 _offset;
         [SerializeField] private Transform _target;
 
-        [Header("Dependencies")]
-        [SerializeField] private InputController _input;
-
-        [Header("Listening")]
-        [SerializeField] private VoidEventChannelSO _onReset;
-
-        private bool _follow = false;
+        public bool IsFollowing { get; private set; } = false;
         private Vector3 _targetPos;
 
         private Vector3 _startPos;
-
-        private void OnEnable()
-        {
-            _input.OnJump += Enable;
-
-            _onReset.OnEventRaised += OnReset;
-        }
-
-        private void OnEDisable()
-        {
-            _input.OnJump -= Enable;
-
-            _onReset.OnEventRaised -= OnReset;
-        }
 
         private void Awake()
         {
@@ -45,14 +24,14 @@ namespace AlwaysUp.Gameplay
             _startPos = transform.position;
         }
 
-        private void Enable()
+        public void SetEnable(bool isEnable)
         {
-            _follow = true;
+            IsFollowing = isEnable;
         }
 
         private void FixedUpdate()
         {
-            if (!_target || !_follow)
+            if (!_target || !IsFollowing)
                 return;
 
             if (_target.position.y > _targetPos.y)
@@ -62,12 +41,12 @@ namespace AlwaysUp.Gameplay
                     .With(z: transform.position.z);
         }
 
-        private void OnReset()
+        public void ResetCamera()
         {
             transform.position = _startPos;
             // -_offset is used to cancel with +_offset
             _targetPos = _startPos - _offset;
-            _follow = false;
+            IsFollowing = false;
         }
     }
 }
