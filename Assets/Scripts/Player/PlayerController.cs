@@ -16,10 +16,14 @@ namespace AlwaysUp.Gameplay
 
         private Vector3 _ballStartPos;
 
+        private bool _readingInput;
+
         private void OnEnable()
         {
             _onReset.OnEventRaised += OnReset;
             _onBallKilled.OnEventRaised += OnBallKilled;
+
+            _input.OnJump += OnClickJump;
         }
 
         private void OnDisable()
@@ -37,7 +41,9 @@ namespace AlwaysUp.Gameplay
 
         private void OnClickJump()
         {
-            Debug.Log("PlayerController: OnClickJump");
+            if (!_readingInput)
+                return;
+
             if (_pingEffect.enabled)
                 _pingEffect.enabled = false;
 
@@ -47,15 +53,13 @@ namespace AlwaysUp.Gameplay
         private void OnBallKilled()
         {
             _ball.Kill();
-
-            _input.OnJump -= OnClickJump;
+            _readingInput = false;
         }
 
         private void OnReset()
         {
             ResetBall();
-
-            _input.OnJump += OnClickJump;
+            _readingInput = true;
         }
 
         private void ResetBall()
