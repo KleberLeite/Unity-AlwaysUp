@@ -11,17 +11,20 @@ namespace AlwaysUp.Gameplay
 
         [Header("Listening")]
         [SerializeField] private IntEventChannelSO _onHitColor;
+        [SerializeField] private VoidEventChannelSO _onReset;
 
         public static int CurrentColorIndex { get; private set; }
 
         private void OnEnable()
         {
             _onHitColor.OnEventRaised += OnHitColor;
+            _onReset.OnEventRaised += OnReset;
         }
 
         private void OnDisable()
         {
             _onHitColor.OnEventRaised -= OnHitColor;
+            _onReset.OnEventRaised -= OnReset;
         }
 
         private void Awake()
@@ -35,6 +38,11 @@ namespace AlwaysUp.Gameplay
 
             _backgrounFillerSr.color = GameColors.GetColorByIndex(colorIndex);
             _backgroundFillAnimation.Play();
+        }
+
+        private void OnReset()
+        {
+            CurrentColorIndex = -1;
         }
     }
 }
