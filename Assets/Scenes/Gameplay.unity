@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _followUpCam: {fileID: 519420033}
+  _bgCam: {fileID: 519420035}
   _input: {fileID: 161142481}
   _onReset: {fileID: 11400000, guid: b77f320a7bd24b34fbe5f2bea61d96df, type: 2}
 --- !u!1 &519420028
@@ -827,6 +828,7 @@ MonoBehaviour:
   _backgrounFillerSr: {fileID: 856290769}
   _backgroundFillAnimation: {fileID: 519420034}
   _onHitColor: {fileID: 11400000, guid: 2979e756dd230f94fa27b42b8b0446e8, type: 2}
+  _onReset: {fileID: 11400000, guid: b77f320a7bd24b34fbe5f2bea61d96df, type: 2}
 --- !u!1 &1592223794
 GameObject:
   m_ObjectHideFlags: 0

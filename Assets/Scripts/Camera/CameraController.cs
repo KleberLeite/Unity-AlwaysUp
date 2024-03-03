@@ -7,6 +7,7 @@ namespace AlwaysUp.Gameplay
     {
         [Header("Dependencies")]
         [SerializeField] private FollowUpCamera _followUpCam;
+        [SerializeField] private BackgroundCameraColor _bgCam;
         [SerializeField] private InputController _input;
 
         [Header("Listening")]
@@ -37,6 +38,7 @@ namespace AlwaysUp.Gameplay
         private void OnReset()
         {
             _followUpCam.ResetCamera();
+            _bgCam.ResetBackgroundColor();
         }
     }
 }
