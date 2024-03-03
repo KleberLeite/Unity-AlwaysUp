@@ -65,6 +65,8 @@ namespace AlwaysUp.Gameplay
         private void OnReset()
         {
             transform.position = _startPos;
+            // -_offset is used to cancel with +_offset
+            _targetPos = _startPos - _offset;
             _follow = false;
         }
     }
