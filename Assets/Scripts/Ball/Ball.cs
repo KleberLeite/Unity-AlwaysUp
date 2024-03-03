@@ -17,13 +17,17 @@ namespace AlwaysUp.Gameplay
         [SerializeField] private ParticleSystem _ballExplosionParticles;
 
         [Header("Listening")]
+        [SerializeField] private VoidEventChannelSO _onReset;
         [SerializeField] private VoidEventChannelSO _onKilled;
 
         private Rigidbody2D _rig;
 
+        private Vector3 _startPos;
+
         private void Awake()
         {
             _rig = GetComponent<Rigidbody2D>();
+            _startPos = transform.position;
         }
 
         private void OnEnable()
@@ -31,6 +35,7 @@ namespace AlwaysUp.Gameplay
             _input.OnJump += OnJump;
 
             _onKilled.OnEventRaised += OnKilled;
+            _onReset.OnEventRaised += OnReset;
         }
 
         private void OnDisable()
@@ -38,6 +43,7 @@ namespace AlwaysUp.Gameplay
             _input.OnJump -= OnJump;
 
             _onKilled.OnEventRaised -= OnKilled;
+            _onReset.OnEventRaised -= OnReset;
         }
 
         private void OnJump()
@@ -61,6 +67,15 @@ namespace AlwaysUp.Gameplay
             _ballExplosionParticles.Play();
 
             _input.OnJump -= OnJump;
+        }
+
+        private void OnReset()
+        {
+            _input.OnJump += OnJump;
+            _ballGO.SetActive(true);
+            _ballExplosionParticles.gameObject.SetActive(false);
+            _rig.velocity = Vector2.zero;
+            transform.position = _startPos;
         }
     }
 }

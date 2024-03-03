@@ -225,6 +225,7 @@ MonoBehaviour:
   _colorObstaclePool: {fileID: 1670259587}
   _obstaclesPerSector: 2
   _countToNewColorObstacle: 6
+  _onReset: {fileID: 11400000, guid: b77f320a7bd24b34fbe5f2bea61d96df, type: 2}
 --- !u!1 &161142479
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +374,7 @@ MonoBehaviour:
   _offset: {x: 0, y: 2.5, z: 0}
   _target: {fileID: 2038577963}
   _input: {fileID: 161142481}
+  _onReset: {fileID: 11400000, guid: b77f320a7bd24b34fbe5f2bea61d96df, type: 2}
 --- !u!111 &519420034
 Animation:
   m_ObjectHideFlags: 0
@@ -633,8 +635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34af0697462ab0428321582b36a859a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ball: {fileID: 2038577961}
-  _ballExplosionParticlesPrefab: {fileID: 9102726271584466966, guid: 502fbae761583b94f9a6c18ea06e8f82, type: 3}
+  _timeBetweenBallKilledAndReset: 1
+  _reset: {fileID: 11400000, guid: b77f320a7bd24b34fbe5f2bea61d96df, type: 2}
   _onBallKilled: {fileID: 11400000, guid: 711434b337cf6ce4fb7d4d8061bdb058, type: 2}
 --- !u!1 &1449459090
 GameObject:
@@ -913,11 +915,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: -5024710111061230452, guid: b05589cc5f2f35a4e9f451f8c3b3b6fa, type: 3}
   _count: 9
---- !u!1 &2038577961 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3608860530819656241, guid: db963f20abf06304ea3520ca33e4a626, type: 3}
-  m_PrefabInstance: {fileID: 3608860530945347864}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2038577963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3608860530819656243, guid: db963f20abf06304ea3520ca33e4a626, type: 3}
@@ -986,9 +983,17 @@ PrefabInstance:
       propertyPath: _input
       value: 
       objectReference: {fileID: 161142481}
+    - target: {fileID: 3608860530819656246, guid: db963f20abf06304ea3520ca33e4a626, type: 3}
+      propertyPath: _onReset
+      value: 
+      objectReference: {fileID: 11400000, guid: b77f320a7bd24b34fbe5f2bea61d96df, type: 2}
     - target: {fileID: 3608860530819656247, guid: db963f20abf06304ea3520ca33e4a626, type: 3}
       propertyPath: _input
       value: 
       objectReference: {fileID: 161142481}
+    - target: {fileID: 3608860530819656247, guid: db963f20abf06304ea3520ca33e4a626, type: 3}
+      propertyPath: _onReset
+      value: 
+      objectReference: {fileID: 11400000, guid: b77f320a7bd24b34fbe5f2bea61d96df, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db963f20abf06304ea3520ca33e4a626, type: 3}

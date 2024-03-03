@@ -1,3 +1,4 @@
+using AlwaysUp.Events;
 using AlwaysUp.Utils;
 using UnityEngine;
 
@@ -14,24 +15,34 @@ namespace AlwaysUp.Gameplay
         [Header("Dependencies")]
         [SerializeField] private InputController _input;
 
-        private bool _follow = false;
+        [Header("Listening")]
+        [SerializeField] private VoidEventChannelSO _onReset;
 
+        private bool _follow = false;
         private Vector3 _targetPos;
+
+        private Vector3 _startPos;
 
         private void OnEnable()
         {
             _input.OnJump += Enable;
+
+            _onReset.OnEventRaised += OnReset;
         }
 
         private void OnEDisable()
         {
             _input.OnJump -= Enable;
+
+            _onReset.OnEventRaised -= OnReset;
         }
 
         private void Awake()
         {
             // -_offset is used to cancel with +_offset
             _targetPos = transform.position - _offset;
+
+            _startPos = transform.position;
         }
 
         private void Enable()
@@ -49,6 +60,12 @@ namespace AlwaysUp.Gameplay
 
             transform.position = Vector3.Lerp(transform.position, _targetPos + _offset, _smooth)
                     .With(z: transform.position.z);
+        }
+
+        private void OnReset()
+        {
+            transform.position = _startPos;
+            _follow = false;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using AlwaysUp.Events;
 using AlwaysUp.Utils;
 using UnityEngine;
 
@@ -16,11 +17,24 @@ namespace AlwaysUp.Gameplay
         [SerializeField] private int _obstaclesPerSector;
         [SerializeField] private int _countToNewColorObstacle;
 
+        [Header("Listening")]
+        [SerializeField] private VoidEventChannelSO _onReset;
+
         private int _currentSectorIndex;
         private List<Obstacle> _oldObstacles = new List<Obstacle>();
         private List<ObstaclePool> _oldObstaclesPools = new List<ObstaclePool>();
         private int _maxObstacles;
         private int _currentCountToNewColorObstacle;
+
+        private void OnEnable()
+        {
+            _onReset.OnEventRaised += OnReset;
+        }
+
+        private void OnDisable()
+        {
+            _onReset.OnEventRaised -= OnReset;
+        }
 
         private void Awake()
         {
@@ -85,12 +99,28 @@ namespace AlwaysUp.Gameplay
             _oldObstacles.Add(obstacle);
             _oldObstaclesPools.Add(pool);
             if (_oldObstacles.Count > _maxObstacles)
-            {
-                _oldObstaclesPools[0].GiveBack(_oldObstacles[0]);
+                RemoveOldObstacle();
+        }
 
-                _oldObstaclesPools.RemoveAt(0);
-                _oldObstacles.RemoveAt(0);
-            }
+        private void OnReset()
+        {
+            RemoveAllOldObstacles();
+            _currentCountToNewColorObstacle = 0;
+            _currentSectorIndex = 0;
+        }
+
+        private void RemoveAllOldObstacles()
+        {
+            while (_oldObstacles.Count > 0)
+                RemoveOldObstacle();
+        }
+
+        private void RemoveOldObstacle()
+        {
+            _oldObstaclesPools[0].GiveBack(_oldObstacles[0]);
+
+            _oldObstaclesPools.RemoveAt(0);
+            _oldObstacles.RemoveAt(0);
         }
     }
 }
