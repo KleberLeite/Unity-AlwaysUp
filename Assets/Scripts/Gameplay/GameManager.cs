@@ -8,6 +8,7 @@ namespace AlwaysUp.Gameplay
     {
         [Header("Settings")]
         [SerializeField] private float _timeBetweenBallKilledAndReset;
+        [SerializeField] private Animation _openCloseScene;
 
         [Header("Broadcasting")]
         [SerializeField] private VoidEventChannelSO _reset;
@@ -51,7 +52,9 @@ namespace AlwaysUp.Gameplay
 
         private void HandlePreparingState()
         {
+            Debug.Log("GameManager: HandlePreparingState");
             _reset.RaiseEvent();
+            _openCloseScene.Play("OpenScene");
         }
 
         private void OnBallKilled()
