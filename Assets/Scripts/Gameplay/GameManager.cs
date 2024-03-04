@@ -33,7 +33,7 @@ namespace AlwaysUp.Gameplay
             _onBallKilled.OnEventRaised -= OnBallKilled;
         }
 
-        private void Awake()
+        private void Start()
         {
             ChangeGameState(GameState.Preparing);
         }
@@ -52,7 +52,6 @@ namespace AlwaysUp.Gameplay
 
         private void HandlePreparingState()
         {
-            Debug.Log("GameManager: HandlePreparingState");
             _reset.RaiseEvent();
             _openCloseScene.Play("OpenScene");
         }
