@@ -265,7 +265,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161142479}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecb54b8edfa554644bba4c376410df50, type: 3}
   m_Name: 
@@ -856,6 +856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 874158275}
   - component: {fileID: 874158276}
+  - component: {fileID: 874158277}
   m_Layer: 3
   m_Name: Open/Close Scene
   m_TagString: Untagged
@@ -897,6 +898,33 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &874158277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874158274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cd8b3e701cde9548b1f89704fb655d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEventRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c5a9fd184afc8f842a39bbe1b987e934, type: 2}
+        m_TargetAssemblyTypeName: AlwaysUp.Events.VoidEventChannelSO, Assembly-CSharp
+        m_MethodName: RaiseEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &882063791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,8 +1206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34af0697462ab0428321582b36a859a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _input: {fileID: 161142481}
   _timeBetweenBallKilledAndReset: 1
   _openCloseScene: {fileID: 874158276}
+  _onOpenScene: {fileID: 874158277}
   _reset: {fileID: 11400000, guid: b77f320a7bd24b34fbe5f2bea61d96df, type: 2}
   _onBallKilled: {fileID: 11400000, guid: 711434b337cf6ce4fb7d4d8061bdb058, type: 2}
 --- !u!1 &1449459090
