@@ -10,7 +10,7 @@ namespace AlwaysUp.Gameplay
         [SerializeField] private float _jumpForce;
         [SerializeField][Min(0)] private float _maxVerticalVelocity;
         [SerializeField] private ParticleSystem _explosionEffect;
-        [SerializeField] private GameObject _spriteGO;
+        [SerializeField] private GameObject _ballGO;
 
         private Rigidbody2D _rig;
 
@@ -30,7 +30,7 @@ namespace AlwaysUp.Gameplay
         public void Kill()
         {
             // Disable ball sprite
-            _spriteGO.SetActive(false);
+            _ballGO.SetActive(false);
 
             // Enable explosion effect
             _explosionEffect.gameObject.SetActive(true);
@@ -40,7 +40,7 @@ namespace AlwaysUp.Gameplay
         public void Revive()
         {
             // Enable ball sprite
-            _spriteGO.SetActive(true);
+            _ballGO.SetActive(true);
 
             // Stop explosion effect (if it's running)
             _explosionEffect.gameObject.SetActive(false);
