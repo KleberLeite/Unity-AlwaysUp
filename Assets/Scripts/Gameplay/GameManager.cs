@@ -2,6 +2,7 @@ using System.Collections;
 using AlwaysUp.Events;
 using AlwaysUp.Utils;
 using UnityEngine;
+using AlwaysUp.Menus.Core;
 
 namespace AlwaysUp.Gameplay
 {
@@ -9,11 +10,12 @@ namespace AlwaysUp.Gameplay
     {
         [Header("Dependencies")]
         [SerializeField] private InputController _input;
+        [SerializeField] private Menu _endGameMenu;
 
         [Header("Settings")]
-        [SerializeField] private float _timeBetweenBallKilledAndReset;
+        [SerializeField] private float _timeBetweenBallKilledAndOpenEndMenu;
         [SerializeField] private Animation _openCloseScene;
-        [SerializeField] private AnimationEventHandler _onOpenScene;
+        [SerializeField] private OpenCloseSceneAnimationEndDetector _openCloseSceneEndDetector;
 
         [Header("Broadcasting")]
         [SerializeField] private VoidEventChannelSO _reset;
@@ -31,13 +33,15 @@ namespace AlwaysUp.Gameplay
         private void OnEnable()
         {
             _onBallKilled.OnEventRaised += OnBallKilled;
-            _onOpenScene.OnEventRaised.AddListener(OnOpenScene);
+            _openCloseSceneEndDetector.OnOpenEnds.AddListener(OnOpenScene);
+            _openCloseSceneEndDetector.OnCloseEnds.AddListener(OnCloseScene);
         }
 
         private void OnDisable()
         {
             _onBallKilled.OnEventRaised -= OnBallKilled;
-            _onOpenScene.OnEventRaised.RemoveListener(OnOpenScene);
+            _openCloseSceneEndDetector.OnOpenEnds.RemoveListener(OnOpenScene);
+            _openCloseSceneEndDetector.OnCloseEnds.RemoveListener(OnCloseScene);
         }
 
         private void Start()
@@ -61,6 +65,7 @@ namespace AlwaysUp.Gameplay
         {
             _reset.RaiseEvent();
             _input.enabled = false;
+            _endGameMenu.Close();
 
             _openCloseScene.Play("OpenScene");
         }
@@ -74,12 +79,22 @@ namespace AlwaysUp.Gameplay
         {
             _input.enabled = false;
 
-            StartCoroutine(WaitDelayAndReset());
+            StartCoroutine(WaitDelayAndOpenEndMenu());
         }
 
-        private IEnumerator WaitDelayAndReset()
+        private IEnumerator WaitDelayAndOpenEndMenu()
         {
-            yield return new WaitForSeconds(_timeBetweenBallKilledAndReset);
+            yield return new WaitForSeconds(_timeBetweenBallKilledAndOpenEndMenu);
+            _endGameMenu.Open();
+        }
+
+        public void PlayAgain()
+        {
+            _openCloseScene.Play("CloseScene");
+        }
+
+        private void OnCloseScene()
+        {
             ChangeGameState(GameState.Preparing);
         }
     }
