@@ -32,6 +32,9 @@ namespace AlwaysUp.Gameplay
             // Disable ball sprite
             _ballGO.SetActive(false);
 
+            _rig.velocity = Vector2.zero;
+            _rig.gravityScale = 0;
+
             // Enable explosion effect
             _explosionEffect.gameObject.SetActive(true);
             _explosionEffect.Play();
@@ -41,6 +44,8 @@ namespace AlwaysUp.Gameplay
         {
             // Enable ball sprite
             _ballGO.SetActive(true);
+
+            _rig.gravityScale = 1;
 
             // Stop explosion effect (if it's running)
             _explosionEffect.gameObject.SetActive(false);
