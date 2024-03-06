@@ -19,7 +19,7 @@ namespace AlwaysUp.Gameplay
         private float _startY;
         private bool _stopped;
         public static int CurrentScore { get; private set; }
-        private int _highScore;
+        public static int HighScore { get; private set; }
 
         private void OnEnable()
         {
@@ -51,21 +51,21 @@ namespace AlwaysUp.Gameplay
             if (newScore > CurrentScore)
                 CurrentScore = newScore;
 
-            if (CurrentScore > _highScore)
-                _highScore = CurrentScore;
+            if (CurrentScore > HighScore)
+                HighScore = CurrentScore;
         }
 
         private void OnReset()
         {
             CurrentScore = 0;
             _stopped = false;
-            _highScore = _highScoreSave.Get();
+            HighScore = _highScoreSave.Get();
         }
 
         private void Stop()
         {
             _stopped = true;
-            _highScoreSave.Set(_highScore);
+            _highScoreSave.Set(HighScore);
         }
     }
 }
