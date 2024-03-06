@@ -1463,6 +1463,7 @@ MonoBehaviour:
   _scoreMultiplier: 2
   _target: {fileID: 2038577963}
   _minDeslocationToScore: 1
+  _highScoreSave: {fileID: 11400000, guid: 47133e3391f98c6448203ed5d6f46ba7, type: 2}
   _onReset: {fileID: 11400000, guid: b77f320a7bd24b34fbe5f2bea61d96df, type: 2}
   _onStop: {fileID: 11400000, guid: 711434b337cf6ce4fb7d4d8061bdb058, type: 2}
 --- !u!1 &1167216302

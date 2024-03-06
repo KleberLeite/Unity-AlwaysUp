@@ -1,4 +1,5 @@
 using AlwaysUp.Events;
+using AlwaysUp.Save;
 using UnityEngine;
 
 namespace AlwaysUp.Gameplay
@@ -9,6 +10,7 @@ namespace AlwaysUp.Gameplay
         [SerializeField] private float _scoreMultiplier;
         [SerializeField] private Transform _target;
         [SerializeField] private float _minDeslocationToScore;
+        [SerializeField] private IntPlayerPrefSO _highScoreSave;
 
         [Header("Listening")]
         [SerializeField] private VoidEventChannelSO _onReset;
@@ -17,6 +19,7 @@ namespace AlwaysUp.Gameplay
         private float _startY;
         private bool _stopped;
         public static int CurrentScore { get; private set; }
+        private int _highScore;
 
         private void OnEnable()
         {
@@ -47,17 +50,22 @@ namespace AlwaysUp.Gameplay
             int newScore = (int)((_target.transform.position.y - _startY - _minDeslocationToScore) * _scoreMultiplier);
             if (newScore > CurrentScore)
                 CurrentScore = newScore;
+
+            if (CurrentScore > _highScore)
+                _highScore = CurrentScore;
         }
 
         private void OnReset()
         {
             CurrentScore = 0;
             _stopped = false;
+            _highScore = _highScoreSave.Get();
         }
 
-        public void Stop()
+        private void Stop()
         {
             _stopped = true;
+            _highScoreSave.Set(_highScore);
         }
     }
 }

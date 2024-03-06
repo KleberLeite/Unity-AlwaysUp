@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HighScore
   m_EditorClassIdentifier: 
   _key: HighScore
-  _defaultValue: 100
+  _defaultValue: 0
