@@ -1,0 +1,18 @@
+{
+    "name": "Editor",
+    "rootNamespace": "AlwaysUp.Editor",
+    "references": [
+        "GUID:d85b236a19239b6459b4187790aebda1"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
