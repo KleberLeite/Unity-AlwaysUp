@@ -21,6 +21,14 @@ namespace AlwaysUp.Gameplay
         private bool _initializedObjectsIDs;
         private List<int> _obstaclesColorIndex;
 
+        private EdgeCollider2D[] _colliders;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _colliders = GetComponentsInChildren<EdgeCollider2D>();
+        }
+
         private void OnValidate()
         {
             if (_obstacles == null)
@@ -44,6 +52,14 @@ namespace AlwaysUp.Gameplay
                 InitializeObjectsIDs();
 
             SetObstaclesColors();
+            SetCollidersState(enabled: true);
+        }
+
+        private void OnDisable()
+        {
+            // Safe to use again
+            _onHitColorAnim.Stop();
+            transform.localScale = Vector3.one;
         }
 
         private void InitializeObjectsIDs()
@@ -76,11 +92,18 @@ namespace AlwaysUp.Gameplay
             _onHitColor.RaiseEvent(colorIndex);
 
             _onHitColorAnim.Play();
+            SetCollidersState(enabled: false);
         }
 
         private void OnEndHitColorAnim()
         {
             gameObject.SetActive(false);
+        }
+
+        private void SetCollidersState(bool enabled)
+        {
+            foreach (EdgeCollider2D collider in _colliders)
+                collider.enabled = enabled;
         }
     }
 }
