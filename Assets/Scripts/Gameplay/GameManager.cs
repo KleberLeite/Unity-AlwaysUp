@@ -28,7 +28,7 @@ namespace AlwaysUp.Gameplay
             End
         }
 
-        private GameState _currentState;
+        public static GameManager Instance { get; private set; }
 
         private void OnEnable()
         {
@@ -44,6 +44,11 @@ namespace AlwaysUp.Gameplay
             _openCloseSceneEndDetector.OnCloseEnds.RemoveListener(OnCloseScene);
         }
 
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         private void Start()
         {
             ChangeGameState(GameState.Preparing);
@@ -57,8 +62,6 @@ namespace AlwaysUp.Gameplay
                     HandlePreparingState();
                     break;
             }
-
-            _currentState = newState;
         }
 
         private void HandlePreparingState()

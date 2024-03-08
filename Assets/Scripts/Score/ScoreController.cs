@@ -20,6 +20,7 @@ namespace AlwaysUp.Gameplay
         private bool _stopped;
         public static int CurrentScore { get; private set; }
         public static int HighScore { get; private set; }
+        public static bool NewHighScore { get; private set; }
 
         private void OnEnable()
         {
@@ -52,13 +53,17 @@ namespace AlwaysUp.Gameplay
                 CurrentScore = newScore;
 
             if (CurrentScore > HighScore)
+            {
+                NewHighScore = true;
                 HighScore = CurrentScore;
+            }
         }
 
         private void OnReset()
         {
             CurrentScore = 0;
             _stopped = false;
+            NewHighScore = false;
             HighScore = _highScoreSave.Get();
         }
 
