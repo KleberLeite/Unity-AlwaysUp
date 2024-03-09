@@ -470,7 +470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &469060867
 RectTransform:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 74.99999, y: 4}
+  m_AnchoredPosition: {x: 75, y: 4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &469060868
@@ -1357,14 +1357,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1167099471}
-  - component: {fileID: 1167099472}
+  - component: {fileID: 1167099473}
   m_Layer: 5
   m_Name: HUDHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1167099471
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1387,22 +1387,27 @@ RectTransform:
   m_AnchoredPosition: {x: 50, y: -60}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &1167099472
-Animation:
+--- !u!95 &1167099473
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167099470}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: da65ae3bcde6f754b99ad0b4112b6a90, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: da65ae3bcde6f754b99ad0b4112b6a90, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 55d85f919ae944c4a85c04bacd6735ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1167216302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1450,8 +1455,8 @@ MonoBehaviour:
   _scoreText: {fileID: 469060868}
   _highScoreText: {fileID: 1792528272}
   _input: {fileID: 161142481}
-  _hudHolder: {fileID: 1167099470}
-  _onReset: {fileID: 11400000, guid: b77f320a7bd24b34fbe5f2bea61d96df, type: 2}
+  _animator: {fileID: 1167099473}
+  _onBallKilled: {fileID: 11400000, guid: 711434b337cf6ce4fb7d4d8061bdb058, type: 2}
 --- !u!1 &1199794045
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,7 +2438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1792528271
 RectTransform:
   m_ObjectHideFlags: 0

@@ -10,23 +10,23 @@ namespace AlwaysUp.Gameplay.UI
         [SerializeField] private TMP_Text _scoreText;
         [SerializeField] private TMP_Text _highScoreText;
         [SerializeField] private InputController _input;
-        [SerializeField] private GameObject _hudHolder;
+        [SerializeField] private Animator _animator;
 
         [Header("Listening")]
-        [SerializeField] private VoidEventChannelSO _onReset;
+        [SerializeField] private VoidEventChannelSO _onBallKilled;
 
         private bool _enabled;
 
         private void OnEnable()
         {
             _input.OnJump += Enable;
-            _onReset.OnEventRaised += Disable;
+            _onBallKilled.OnEventRaised += Disable;
         }
 
         private void OnDisable()
         {
             _input.OnJump -= Enable;
-            _onReset.OnEventRaised -= Disable;
+            _onBallKilled.OnEventRaised -= Disable;
         }
 
         private void Update()
@@ -40,13 +40,13 @@ namespace AlwaysUp.Gameplay.UI
             if (_enabled)
                 return;
 
-            _hudHolder.SetActive(true);
+            _animator.SetBool("HUDIsOpen", true);
             _enabled = true;
         }
 
         private void Disable()
         {
-            _hudHolder.SetActive(false);
+            _animator.SetBool("HUDIsOpen", false);
             _enabled = false;
         }
     }
