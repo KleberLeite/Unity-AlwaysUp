@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52a32db46b08954cb9ae7b1190d5163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpForce: 5
-  _maxVerticalVelocity: 15
+  _jumpForce: 11
+  _maxVerticalVelocity: 12
   _explosionEffect: {fileID: 2032634644577243928}
   _ballGO: {fileID: 3802350019008951270}
 --- !u!114 &3608860530819656247
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc3f8dcbc0a5bb4eb978b97425c33c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pingForce: 3
+  _pingForce: 11
 --- !u!50 &3608860530819656245
 Rigidbody2D:
   serializedVersion: 4
@@ -77,7 +77,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
